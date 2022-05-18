@@ -79,10 +79,13 @@ int main(){
 		string ruserId, rpassword, rid, rpass,lid;
 		system("cls");
 		int count=0,o;
-		ofstream check("records.txt");
+		string Cuser;
+		ifstream check("records.txt");
 		cout<<"\t\t\t Enter the username: ";
 		cin>>ruserId;
-			if(ruserId=="Munciak")
+		 while (!check.eof()){
+		 	check >> Cuser;
+			if(ruserId==Cuser)
 			{
 				cout<<"\t\t\t This username is already taken. \n";
 				cout<<"\t\t\t Choose other username(1) or back to menu(2)";
@@ -91,15 +94,15 @@ int main(){
 					case 1:reg();break;
 					case 2:main();break;
 				}
-			}else{
+			}
+			}
 		cout<<"\t\t\t Enter the password: ";
 		cin>>rpass;
-		
+			
 		cout<<"\t\t\t Sucessfully registered!";
 		ofstream op("records.txt", ios::app);
 		op<<ruserId<<' '<<rpass<<endl;
 		main();
-	}
 	}
 	void fp(){
 		int option; 
@@ -108,6 +111,9 @@ int main(){
 		cout<<" Press 1 to serach you id by username "<<endl;
 		cout<<" Press 2 to go back to the main menu"<<endl;
 		cout<<"\t\t\t Enter your choice: ";cin>>option;
+		cout<<option;
+		
+		
 		switch(option){
 			case 1:{
 				int count=0;
@@ -138,7 +144,7 @@ int main(){
 			}
 				default:{
 					cout<<"\t\t\t You didnt choice good number, try again or exit. ";
-					cout<<"\t\t\t 1- try again"<<endl<<" 2-menu" <<endl;
+					cout<<"\n\t\t\t 1- try again | 2-menu" <<endl;
 					int o;
 					cin>>o;
 					switch(o){
@@ -146,14 +152,11 @@ int main(){
 						case 2:main();break;
 					}
 				}break;
-					
 		}
-		
 	}
 	void output(){
 		
-		for(int i=0;i<list.eof;i++){
-			cout<<i;
-		}
+		
+				
 	}
 
